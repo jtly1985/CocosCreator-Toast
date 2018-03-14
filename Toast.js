@@ -1,4 +1,4 @@
-var Toast = {
+let Toast = {
     LENGTH_LONG: 3.5,
     LENGTH_SHORT: 2,
     CENTER: 0,
@@ -29,9 +29,9 @@ Toast.makeText = function (text, duration) {
         }
         //
         this.show = function () {
+            let self = this;
             // 加载背景纹理
             if (Toast.bgSpriteFrame === undefined) {
-                self = this;
                 (function () {
                     cc.loader.load({ 'uuid': 'b43ff3c2-02bb-4874-81f7-f2dea6970f18' },
                         function (error, result) {
@@ -51,9 +51,9 @@ Toast.makeText = function (text, duration) {
                 return;
             }
             // canvas
-            var canvas = cc.director.getScene().getComponentInChildren(cc.Canvas);
-            var width = canvas.node.width;
-            var height = canvas.node.height;
+            let canvas = cc.director.getScene().getComponentInChildren(cc.Canvas);
+            let width = canvas.node.width;
+            let height = canvas.node.height;
             if (_duration === undefined) {
                 _duration = LENGTH_SHORT;
             }
@@ -131,11 +131,13 @@ Toast.makeText = function (text, duration) {
             let action = cc.sequence(cc.moveBy(_duration,cc.p(0,0)),cc.fadeOut(0.3), finished);
             bgNode.runAction(action);
         }
-    }
+    };
 
     return new ToastObject(text, duration);
 };
 
 Toast.showText = function (text, duration) {
     Toast.makeText(text, duration).show();
-}
+};
+
+module.exports = Toast;
