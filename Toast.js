@@ -55,7 +55,7 @@ Toast.makeText = function (text, duration) {
             var width = canvas.node.width;
             var height = canvas.node.height;
             if (_duration === undefined) {
-                _duration = LENGTH_SHORT;
+                _duration = Toast.LENGTH_SHORT;
             }
             // 背景图片设置
             let bgNode = new cc.Node();
